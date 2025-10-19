@@ -29,10 +29,12 @@ export default function ImageGallery({ images, roomName }: ImageGalleryProps) {
                   src={images[selectedImage]}
                   alt={`${roomName} - фото ${selectedImage + 1}`}
                   fill
+                  sizes="(max-width: 768px) 100vw, (max-width: 1200px) 80vw, 1200px"
                   className="object-cover transition-transform duration-300 group-hover:scale-105"
                   priority
+                  unoptimized
                />
-               <div className="absolute inset-0 bg-black bg-opacity-0 group-hover:bg-opacity-20 transition-all flex items-center justify-center">
+               <div className="absolute inset-0 group-hover:backdrop-brightness-50 bg-black/0 transition-all flex items-center justify-center">
                   <span className="text-white opacity-0 group-hover:opacity-100 transition-opacity text-lg font-medium">
                      Переглянути у повному розмірі
                   </span>
@@ -50,7 +52,13 @@ export default function ImageGallery({ images, roomName }: ImageGalleryProps) {
                         }`}
                         onClick={() => setSelectedImage(index)}
                      >
-                        <Image src={image} alt={`${roomName} - мініатюра ${index + 1}`} fill className="object-cover" />
+                        <Image
+                           src={image}
+                           alt={`${roomName} - мініатюра ${index + 1}`}
+                           fill
+                           sizes="(max-width: 768px) 25vw, 200px"
+                           className="object-cover"
+                        />
                      </div>
                   ))}
                </div>
@@ -71,7 +79,13 @@ export default function ImageGallery({ images, roomName }: ImageGalleryProps) {
                </button>
 
                <div className="relative w-full max-w-5xl h-[80vh]" onClick={(e) => e.stopPropagation()}>
-                  <Image src={images[selectedImage]} alt={`${roomName} - фото ${selectedImage + 1}`} fill className="object-contain" />
+                  <Image
+                     src={images[selectedImage]}
+                     alt={`${roomName} - фото ${selectedImage + 1}`}
+                     fill
+                     sizes="(max-width: 768px) 100vw, 1400px"
+                     className="object-contain"
+                  />
 
                   {images.length > 1 && (
                      <>

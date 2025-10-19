@@ -6,17 +6,10 @@ import Footer from '@/components/Footer'
 import BookingForm from '@/components/BookingForm'
 import ImageGallery from '@/components/ImageGallery'
 
-interface PageProps {
-   params: Promise<{ id: string }>
-}
-
-export default async function RoomPage({ params }: PageProps) {
+export default async function RoomPage({ params }: { params: Promise<{ id: string }> }) {
    const { id } = await params
    const room = await getRoomById(id)
-
-   if (!room) {
-      notFound()
-   }
+   if (!room) notFound()
 
    return (
       <>
@@ -70,7 +63,7 @@ export default async function RoomPage({ params }: PageProps) {
                         <p className="text-gray-600 leading-relaxed">{room.description}</p>
                      </div>
 
-                     <div className="mb-8">
+                     {/* <div className="mb-8">
                         <h2 className="text-2xl font-semibold text-gray-900 mb-4">Зручності</h2>
                         <div className="grid grid-cols-2 gap-3">
                            {room.amenities.map((amenity) => (
@@ -82,7 +75,7 @@ export default async function RoomPage({ params }: PageProps) {
                               </div>
                            ))}
                         </div>
-                     </div>
+                     </div> */}
 
                      {/* Booking Form */}
                      {room.available && (

@@ -39,17 +39,6 @@ export default function RoomCard({ room }: RoomCardProps) {
                </span>
             </div>
 
-            <div className="flex flex-wrap gap-2 mb-4">
-               {room.amenities.slice(0, 3).map((amenity) => (
-                  <span key={amenity} className="px-3 py-1 bg-gray-100 text-gray-700 text-sm rounded-full">
-                     {amenity}
-                  </span>
-               ))}
-               {room.amenities.length > 3 && (
-                  <span className="px-3 py-1 bg-gray-100 text-gray-700 text-sm rounded-full">+{room.amenities.length - 3} ще</span>
-               )}
-            </div>
-
             <Link
                href={`/rooms/${room.id}`}
                className="block w-full bg-blue-600 text-white text-center py-3 rounded-lg hover:bg-blue-700 transition-colors font-medium"
